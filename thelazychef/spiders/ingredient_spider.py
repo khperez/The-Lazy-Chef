@@ -2,13 +2,10 @@ import scrapy
 
 class IngredientSpider(scrapy.Spider):
     name = "ingredients"
-    start_urls = [
-        'https://www.budgetbytes.com/2017/01/chicken-broccoli-pasta-lemon-cream-sauce/'
-    ]
+
+    def __init__(self, url=None, *args, **kwargs):
+        super(IngredientSpider, self).__init__(*args, **kwargs)
+        self.start_urls = "{}".format(url)
 
     def parse(self, response):
-        for ingredient in response.css('h2.entry-title'):
-            yield {
-                'title': recipe.css('a::text').extract(),
-                'link': recipe.css('a::attr(href)').extract()
-            }
+        print "Check"
